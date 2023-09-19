@@ -3,15 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oscar Ramos</title>
+    <meta name="description"  content="WDD 230 - Web Frontend Development - Oscar Ramos">
+    <title>Oscar Ramos - WDD230 - Web Fronted Development</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/larger.css">
 </head>
 <body>
     <header>
-
+        <img src="images/bioPicture.jpg" alt="picture of myself">
+        <h1>Oscar Ramos</h1>
     </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Chamber</a></li>
+            <li><a href="#">Site Plana</a></li>
+            <li><a href="#">Form</a></li>
+        </ul>
+    </nav>
     <main>
-        <h1>Oscar Ramo's portfolio</h1>
+        <h2>WDD 230: Web Frontend Development</h2>
+        <section class="card">
+            <h3>Learning activities</h3>
+            <ul>
+                <li><a href="#">Learning activity 1</a></li>
+                <li><a href="#">Learning activity 2</a></li>
+                <li><a href="#">Learning activity 3</a></li>
+            </ul>
+        </section>
+        <section class="card">
+            <h3>Information</h3>
+            <p>Weather: 31 C</p>
+            <p>Page views: 0 views</p>
+        </section>
     </main>
-    <footer></footer>
+    <footer>
+        <p>&copy; 2023 Oscar Ramos Rexburg, Idaho</p>
+        <p id="lastModified"></p>
+    </footer>
+    <script src="scripts/getDates.js"></script>
 </body>
 </html>
