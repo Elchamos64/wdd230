@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Roboto&family=Rubik:wght@300&display=swap');
+
+
+body {
+    font-family: 'Raleway', Roboto, Rubik;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+img {
+    width: 20%;
+}
+/* mobile **************************/
+header {
+    max-width: 767px;
+	margin: 0 auto;
+    background: #eee5ac;
+	animation: colorchange 60s infinite;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+main {
+	max-width: 767px;
+	margin: 0 auto;
+}
+
+h1 {
+	font-size: 2rem;
+    margin: auto;
+    color: #fff;
+}
+
+nav {
+	background: #E76f51;
+	margin: 0 auto;
+	max-width: 767px;
+}
+nav ul {
+	list-style-type: none;
+}
+nav a {
+	display: block;
+	color: #fff;
+	text-align: center;
+	padding: 1rem;
+	text-decoration: none;
+}
+
+nav a:hover {
+	background-color: #fff;
+    color: #E76f51;
+}
+
+.active {
+	color: yellow;
+}
+
+
+
+
+
+
+@keyframes colorchange {
+    0% {
+      background:#CAD2C5;
+    }
+    20% {
+      background:#84A98C;
+      color: white;
+    }
+    40% {
+      background: #52796F;
+      color: white;
+    }
+    60% {
+      background: #354F52;
+      color: white;
+    }
+    80% {
+      background: #2F3E46;
+      color: white;
+    }
+    85% {
+        background: #354F52;
+        color: white;
+    }
+    90% {
+        background: #52796F;
+        color: white;
+    }
+    100% {
+        background:#84A98C;
+        color: white;
+    }
+  }
