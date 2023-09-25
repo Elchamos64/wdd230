@@ -82,9 +82,9 @@ nav a:hover {
 
 .card {
   background: #fff;
-	margin: 0 auto;
+  margin: 0 auto;
   margin-bottom: 20px;
-	max-width: 767px;
+  max-width: 767px;
   display: block;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -98,7 +98,7 @@ footer {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   color: #fff;
   margin: 0 auto;
-	max-width: 767px;
+  max-width: 767px;
   padding: 10px;
 }
 
