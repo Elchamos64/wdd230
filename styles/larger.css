@@ -4,13 +4,13 @@
 		display: flex;
 	}
 	nav ul li {
-		flex: 1 1 100%;
+		flex: auto;
 	}
 
     main {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 45% 1fr;
+        grid-template-rows: 30% 1fr;
     }
 
     h2 {
