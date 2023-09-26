@@ -3,6 +3,9 @@
 
 body {
     font-family: 'Raleway', Roboto, Rubik;
+	/* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	animation: gradient 15s ease infinite;
+	background-size: 400% 400%; */
 }
 
 * {
@@ -24,7 +27,8 @@ header {
   justify-content: center;
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #CB2A3F, #CB6C18);
+  background-size: 400% 400%;
 }
 
 main {
@@ -49,15 +53,19 @@ h2 {
 
 h3 {
   text-align:center;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #CB2A3F, #CB6C18);
   color: #fff;
   padding: 10px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
 nav {
-	background: #E76f51;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #CB2A3F, #CB6C18);
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
 	margin: 0 auto;
 	max-width: 800px;
 }
@@ -77,10 +85,6 @@ nav a {
 nav a:hover {
 	background-color: #fff;
     color: #E76f51;
-}
-
-.active {
-	color: yellow;
 }
 
 .card {
@@ -103,11 +107,13 @@ nav a:hover {
 
 footer {
   text-align: center;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #CB2A3F, #CB6C18);
   color: #fff;
   margin: 0 auto;
   max-width: 767px;
   padding: 10px;
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
 }
 
 
