@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Roboto&family=Rubik:wght@300&display=swap');
+
+
+body {
+    background-color: #ECFCFF;
+    font-family: 'Raleway', Roboto, Rubik;
+}
+
+.title {
+    background-color: #023E8A;
+    padding: 1%;
+}
+.title h1  {
+    color: #fff;
+    text-align: center;
+}
