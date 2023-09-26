@@ -17,24 +17,24 @@ img {
 /* mobile **************************/
 header {
   max-width: 800px;
-	margin: 0 auto;
-	animation: gradient 15s ease infinite;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 20px;
-	border: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  animation: gradient 15s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 }
 
 main {
-	max-width: 767px;
-	margin: 0 auto;
+  max-width: 767px;
+  margin: 0 auto;
   padding: 1%;
 }
 
 h1 {
-	font-size: 2rem;
+  font-size: 2rem;
   margin: auto;
   color: #fff;
   text-align: center;
@@ -52,6 +52,8 @@ h3 {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   color: #fff;
   padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 nav {
@@ -91,6 +93,11 @@ nav a:hover {
 
 .card ul {
   list-style-type: none;
+  margin: 20px;
+}
+
+.card p {
+	margin: 20px;
 }
 
 footer {
