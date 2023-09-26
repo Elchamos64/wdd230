@@ -99,10 +99,12 @@ nav a:hover {
 .card ul {
   list-style-type: none;
   margin: 20px;
+  font-family: 'Roboto';
 }
 
 .card p {
 	margin: 20px;
+  font-family: 'Roboto';
 }
 
 footer {

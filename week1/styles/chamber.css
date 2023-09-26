@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Roboto&family=Rubik:wght@300&display=swap');
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
 body {
     background-color: #ECFCFF;
@@ -7,10 +12,70 @@ body {
 }
 
 .title {
-    background-color: #023E8A;
+    background-image: linear-gradient( #023E8A, #0096c7 ,#ECFCFF);
     padding: 1%;
-}
-.title h1  {
-    color: #fff;
     text-align: center;
+    color: #fff;
+    padding: 1%;
+    padding-top: 5%;
+    margin-bottom: 5%;
+    height: 180px;
 }
+
+.purpose {
+    color:#fff;
+    background-image: linear-gradient(to right, #023E8A, #0096c7 , #48CAE4);
+    padding: 1%;
+    margin-bottom: 1%;
+}
+
+main {
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.scenarios {
+    color: #fff;
+    background-color: #0096c7;
+    grid-column: 3/4;
+    width: 90%;
+    grid-row: 1/2;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.scenarios p {
+    padding: 15px;
+}
+
+.colors h3{
+    background-image: linear-gradient(to right, #023E8A, #0096c7 , #48CAE4);
+    color: #fff;
+    margin-bottom: 1%;
+    padding: 10px;
+}
+
+#color1 {
+    background-color: #023E8A;
+    color: #fff;
+    padding: 10px; 
+}
+
+#color2 {
+    background-color: #0096c7;
+    color: #fff;
+    padding: 10px; 
+}
+
+#color3 {
+    background-color: #48CAE4;
+    color: #fff;
+    padding: 10px; 
+}
+
+#color4 {
+    background-color: #ECFCFF;
+    color: black;
+    padding: 10px; 
+}
+
