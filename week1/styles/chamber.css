@@ -40,7 +40,7 @@ body {
 main {
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
-    grid-template-rows: 400px 1fr 1fr;
+    grid-template-rows: 400px 40px 1fr;
 }
 .scenarios {
     color: #fff;
@@ -137,10 +137,26 @@ footer {
   animation: gradient 15s ease infinite;
 }
 
-.wireframes h4{
+.wireframes {
     grid-row: 3/4;
+    grid-column: 1/4;
+    display: flex;
+    padding: 1%;
+}
+
+#bigger-view {
+    margin-left: 5%;
+}
+
+#phone {
+    margin-left: 5%;
+}
+
+h4{
+    grid-row: 2/3;
+    padding: 1%;
+    grid-column: 1/4;
+    height: 100%;
     color:#fff;
     background-image: linear-gradient(to right, #023E8A, #0096c7 , #48CAE4);
-    padding: 1%;
-    margin-bottom: 1%;
 }
