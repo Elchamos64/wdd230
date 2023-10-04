@@ -3,9 +3,6 @@
 
 body {
     font-family: 'Raleway', Roboto, Rubik;
-	/* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	animation: gradient 15s ease infinite;
-	background-size: 400% 400%; */
 }
 
 * {
@@ -17,18 +14,17 @@ body {
 img {
   width: 20%;
 }
+
 /* mobile **************************/
 header {
   max-width: 800px;
   margin: 0 auto;
-  animation: gradient 15s ease infinite;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #CB2A3F, #CB6C18);
-  background-size: 400% 400%;
+  background-color: #2F3E46;
 }
 
 main {
@@ -53,39 +49,13 @@ h2 {
 
 h3 {
   text-align:center;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #CB2A3F, #CB6C18);
+  background-color:#52796F;
   color: #fff;
   padding: 10px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
 }
 
-nav {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #CB2A3F, #CB6C18);
-  animation: gradient 15s ease infinite;
-  background-size: 400% 400%;
-	margin: 0 auto;
-	max-width: 800px;
-}
-
-nav ul {
-	list-style-type: none;
-}
-
-nav a {
-	display: block;
-	color: #fff;
-	text-align: center;
-	padding: 1rem;
-	text-decoration: none;
-}
-
-nav a:hover {
-	background-color: #fff;
-    color: #E76f51;
-}
 
 .card {
   background: #fff;
@@ -109,16 +79,65 @@ nav a:hover {
 
 footer {
   text-align: center;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #CB2A3F, #CB6C18);
-  color: #fff;
+  background-color: #2F3E46;
+  color: white;
   margin: 0 auto;
   max-width: 767px;
   padding: 10px;
-  animation: gradient 15s ease infinite;
-  background-size: 400% 400%;
 }
 
 
+/* hamburguer menu */
+#menu {
+	font-size: 1.5rem;
+	border: 1px solid rgba(0,0,0,.3);
+	padding: 3px 7px 6px;
+	background-color: #eee;
+	color: #000;
+}
+
+#menu::before {
+	content: "☰";
+}
+
+#menu.open::before {
+	content: "→";
+}
+
+nav {
+  background-color: #52796F;
+}
+
+.navigation {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	background-color: #333;
+	color: #fff;
+}
+.navigation li {
+	display: none;
+}
+.navigation li a {
+	display: block;
+	padding: 1rem;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+}
+.navigation li a:hover {
+	background-color: #bbb;
+	color: #333;
+	font-weight: 700;
+}
+
+.open li {
+	display: block;
+	width: 100%;
+}
+.open li a {
+	display: block;
+}
 
 @keyframes gradient {
 	0% {

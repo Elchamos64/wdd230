@@ -1,11 +1,29 @@
 @media only screen and (min-width: 450px) {
-
+	#menu {
+		display: none; /* hide hamburger button */
+	}
+    
+    nav{
+        max-width: 800px;
+        margin: auto;
+    }
     nav ul {
 		display: flex;
 	}
 	nav ul li {
 		flex: auto;
 	}
+
+    .navigation {
+		flex-direction: row;
+        background-color: #52796F;
+	}
+
+	.navigation li {
+		display: block;
+		flex: 1 1 100%;
+	}
+
 
     main {
         display: grid;
