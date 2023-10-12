@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 300px;
+} 
+
+img {
+    width: 100%;
+    margin-bottom: 10em;
+}
