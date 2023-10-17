@@ -2,9 +2,15 @@
 	#menu {
 		display: none; /* hide hamburger button */
 	}
-    
+
+    .hero-img img {
+        grid-column: 1/3; 
+    }
+    header {
+        max-width: 100%;
+    }
     nav{
-        max-width: 800px;
+        max-width: 100%;
         margin: auto;
     }
     nav ul {
@@ -38,5 +44,11 @@
         grid-row:auto;
         margin: 0 10px;
         margin-bottom: 40px;
+    }
+
+    iframe {
+        width: 100%;
+        padding-bottom: 10px;
+        grid-column: 1/3;
     }
 }
