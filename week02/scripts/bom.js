@@ -1,17 +1,28 @@
 const input = document.querySelector('#favchap');
 const button = document.querySelector('button');
 const list = document.querySelector('#list');
-const feedback = document.querySelector('#feedback');
 
-button.addEventListener('click', () => {
-    if (input.value) {
-    console.log('clicked');
-
-    feedback.textContent = '';
-
-    } else{
-        input.focus();
-
-        feedback.textContent = "Please enter a Book and a Chapter";
+button.onclick = function() {
+    let myChapter = input.value;
+    input.value = '';
+    if (myChapter !== '') {
+    const listItem = document.createElement('li');
+    const listText = document.createElement('span');
+    const listBtn = document.createElement('button');
+    
+    listText.textContent = myChapter;
+    listBtn.textContent = '❌';
+    
+    listItem.appendChild(listText);
+    listItem.appendChild(listBtn);
+    list.appendChild(listItem);
+    
+    listBtn.onclick = function() {
+        list.removeChild(listItem);
     }
-});
+}
+else {
+    alert('Please enter a chapter');
+}
+    input.focus();
+    }

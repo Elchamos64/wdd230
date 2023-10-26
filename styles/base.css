@@ -62,12 +62,11 @@ h3 {
 
 .card {
   background: #fff;
-  margin: 0 auto;
-  margin-bottom: 20px;
   max-width: 767px;
   display: block;
-  padding: 1%;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .card ul {
@@ -86,13 +85,13 @@ footer {
   background-color: #2F3E46;
   color: white;
   margin: 0 auto;
-  max-width: 767px;
   padding: 10px;
 }
 
 iframe {
   width:100%;
   padding: 1%;
+  border-radius: 20px;
 }
 
 /* hamburguer menu */
