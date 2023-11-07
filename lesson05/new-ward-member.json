@@ -1,0 +1,23 @@
+{
+    "familyName": "Ramos",
+    "dateMovedIn": "2023-10-07",
+    "numberOfPeopleInFamily": 3,
+    "visitedByBishopric": false,
+    "familyMembers": [
+        {
+            "name": "Oscar",
+            "gender": "Male",
+            "birthDate": "1997-09-1"
+        },
+        {
+            "name": "Leo",
+            "gender": "Male",
+            "birthDate": "2000-09-1"
+        },
+        {
+            "name": "Luna",
+            "gender": "Female",
+            "birthDate": "2004-08-16"
+        }
+    ]
+}
