@@ -1,0 +1,18 @@
+@media only screen and (min-width: 32em ) 
+{
+    #cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      img {
+        width: auto;
+	    max-width: 320px;
+      }
+}

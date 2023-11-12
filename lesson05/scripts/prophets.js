@@ -13,8 +13,24 @@ function displayProphets(prophets)
     prophets.forEach(prophet => {
         const card = document.createElement('section');
         const fullName = document.createElement('h2');
+        const portrait = document.createElement('img');
+        const dateOfBirth = document.createElement('p');
+        const placeOfBirth = document.createElement('p');
+
+        portrait.setAttribute('src', prophet.imageurl);
+        portrait.setAttribute('alt', `Portrait of ${prophet.name}`);
+        portrait.setAttribute('loading', 'lazy');
+        portrait.setAttribute('width', '340');
+        portrait.setAttribute('height', '440');
+
         fullName.textContent = `${prophet.name} ${prophet.lastname}`
+        dateOfBirth.textContent = `Date of Birth: ${prophet.birthdate}`
+        placeOfBirth.textContent = `Place of Birth: ${prophet.birthplace}`
+
         card.appendChild(fullName);
+        card.appendChild(dateOfBirth);
+        card.appendChild(placeOfBirth);
+        card.appendChild(portrait);
         cards.appendChild(card);
     });
 }
