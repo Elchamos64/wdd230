@@ -1,0 +1,16 @@
+[
+  {
+    "name": "IDWEB",
+    "address": {
+      "street1": "2115 S Vista Avenue",
+      "street2": "",
+      "city": "Boise",
+      "state": "Idaho",
+      "zipcode": "83705"
+    },
+    "phone": "208-342-9386",
+    "url": "",
+    "imageUrl": "",
+    "membershiLevel": "Gold"
+  }
+]
