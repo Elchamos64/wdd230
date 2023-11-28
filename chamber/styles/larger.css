@@ -2,7 +2,33 @@
     #menu {
 		display: none; /* hide hamburger button */
 	}
+
+    header h1 {
+        margin: 0 auto;
+        font-size: 2rem;
+    }
+    .card-weather, .card-spotlight, .card-events {
+        margin: 10px;
+        background-color: #E9ECEF;
+      }
+
+    h2 {
+        text-align:center;
+        background-image: none;
+        background-color: #E9ECEF;
+        color: #023e8a;
+        padding: 10px;
+        font-size: 2rem;
+        text-decoration: underline;
+      }
+      .card{
+        background-color: #E9ECEF;
+      }
     
+    .hero-img img {
+        height: 400px;
+    }
+
     nav{
         max-width: 100%;
         margin: auto;
@@ -21,5 +47,11 @@
     .navigation li {
         display: block;
         flex: 1 1 100%;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
     }
 }

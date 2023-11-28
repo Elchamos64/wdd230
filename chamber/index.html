@@ -10,9 +10,9 @@
 </head>
 <body>
     <header>
-        <section class="logo">
+        <div class="logo">
             <img src="images/logo.jpg" alt="logo image">
-        </section>  
+        </div>  
         <h1>San Pedro Sula Chamber of Commerce</h1>
     </header>
     <nav>
@@ -24,17 +24,41 @@
             <li><a href="#">Join</a></li>
         </ul>
     </nav>
-    <section class = "hero-img">
-        <picture>
-            <img src="images/hero-img.jpg" alt="hero image">
-        </picture>
-    </section>
+    <div class="hero">
+        <div class = "hero-img">
+            <picture>
+                <img src="images/hero-img.jpg" alt="hero image">
+            </picture>
+            <button id="cta">Join us</button>
+        </div>
+    </div>
+
     <main>
-        <h2>Upcoming events</h2>
+        <section class="card-events">
+            <h2>Upcoming events</h2>
+            <ul>
+                <li><a href="#">Event 1</a></li>
+                <li><a href="#">Event 2</a></li>
+                <li><a href="#">Event 3</a></li>
+                <li><a href="#">Event 4</a></li>    
+            </ul>
+        </section>
+        <section class="card-weather">
+            <h2>Current Weather</h2>
+                <img id="weather-icon" src="#" alt="icon for the weather"> <span id="current-temp"></span>
+        </section>
+        <section class="card-spotlight">
+            <h2>Company spotlight</h2>
+            <p>Lorem ipsum, st obcaecati libero repudiandae assumenda accusantium eligendi ratione.</p>
+        </section>
     </main>
     <footer>
-
+        <p>&copy; <span id="year"></span> | Oscar Ramos | San Pedro Sula, Honduras</p>
+        <p>WDD230 Chamber Site Project</p>
+        <p id="lastModified"></p>
     </footer>
     <script src="scripts/hamburguerMenu.js"></script>
+    <script src="scripts/weather.js"></script>
+    <script src="scripts/lastModified.js"></script>
 </body>
 </html>
