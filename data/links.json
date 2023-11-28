@@ -1,0 +1,53 @@
+[
+  {
+    "Lessons": [
+      {
+        "week": "Lesson01",
+        "link": [
+          {
+            "url": "week1/holygrail.html",
+            "title": "HG Layout"
+          },
+          {
+            "url": "week1/chamber-site-plan.html",
+            "title": "Chamber Site Plan"
+          },
+          {
+            "url": "week1/media-query.html",
+            "title": "Media Query"
+          }
+        ]
+      }, 
+      {
+        "week": "Lesson02",
+        "link": [
+          {
+            "url": "week02/design.html",
+            "title": "Design Principle"
+          },
+          {
+            "url": "week02/bom.html",
+            "title": "DOM Manipulation"
+          },
+          {
+            "url": "favicon.ico",
+            "title": "Fav Icon"
+          },
+          {
+            "url": "#",
+            "title": "Meta Tags"
+          },
+          {
+            "url": "https://codepen.io/Oscar-Andres-Ramos-Garcia/pen/wvRXJQK",
+            "title": "Hamburguer Menu"
+          },
+          {
+            "url": "https://codepen.io/Oscar-Andres-Ramos-Garcia/pen/wvRXJQK",
+            "title": "Hamburguer Menu"
+          }
+        ]
+      }
+
+    ]
+  }
+]

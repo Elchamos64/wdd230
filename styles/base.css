@@ -75,7 +75,7 @@ h3 {
   font-family: 'Roboto';
 }
 
-.card p {
+.card p, figcaption {
 	margin: 20px;
   font-family: 'Roboto';
   display: flex;
