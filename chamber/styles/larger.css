@@ -10,6 +10,7 @@
     .card-weather, .card-spotlight, .card-events {
         margin: 10px;
         background-color: #E9ECEF;
+        width: 300px;
       }
 
     h2 {
@@ -18,7 +19,7 @@
         background-color: #E9ECEF;
         color: #023e8a;
         padding: 10px;
-        font-size: 2rem;
+        font-size: 1rem;
         text-decoration: underline;
       }
       .card{
@@ -26,7 +27,7 @@
       }
     
     .hero-img img {
-        height: 400px;
+        height: 300px;
     }
 
     nav{
@@ -51,7 +52,7 @@
 
     main {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 315px;
         grid-template-rows: 1fr 1fr 1fr;
     }
 }

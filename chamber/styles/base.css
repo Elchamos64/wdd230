@@ -166,8 +166,9 @@ h2 {
   .card-weather{
     text-align: center;
   }
-  .card-weather img {
-	width: 30px;
+  .card-weather img{
+	  width: 30px;
+    
   }
 
   footer {
@@ -177,4 +178,12 @@ h2 {
     margin: 0 auto;
     padding: 12px;
   }
+
+  #weather-container{
+    display: flex;
+    padding-top: 20px;
+    justify-content: center; 
+    align-items: center;
+  }
+
   

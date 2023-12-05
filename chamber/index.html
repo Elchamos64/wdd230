@@ -28,7 +28,7 @@
     <div class="hero">
         <div class = "hero-img">
             <picture>
-                <img src="images/hero-img.jpg" alt="hero image">
+                <img src="images/hero-img.webp" alt="hero image" loading="lazy" width="400" heigth="600">
             </picture>
             <button id="cta">Join us</button>
         </div>
@@ -46,7 +46,11 @@
         </section>
         <section class="card-weather">
             <h2>Current Weather</h2>
-                <img id="weather-icon" src="#" alt="icon for the weather"> <span id="current-temp"></span>
+            <div id="weather-container">
+                <img id="weather-icon" src="#" alt="icon for the weather"> 
+                <span id="current-temp"></span>
+                <figcaption></figcaption>
+            </div>
         </section>
         <section class="card-spotlight">
             <h2>Company spotlight</h2>

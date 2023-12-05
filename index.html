@@ -16,7 +16,7 @@
 </head>
 <body>
     <header>
-        <img src="images/bioPicture.jpg" alt="picture of myself">
+        <img src="images/bioPicture.webp" alt="picture of myself" loading="lazy">
         <h1>Oscar Ramos</h1>
         <button id="mode"></button>
     </header>
@@ -30,14 +30,16 @@
         </ul>
     </nav>
     <main>
-        <section class="hero-img">
+        <div class="hero-img">
             <picture>
-                <h2>San Pedro Sula </h2>
-                <source srcset="lesson03/images/san_pedro_sula_honduras_temple_rendering.webp" media="(max-width: 400px)">
-                <source srcset="lesson03/images/san_pedro_sula_honduras_temple_rendering.webp" media="(max-width: 960px)">
-                <img src="lesson03/images/san_pedro_sula_honduras_temple_rendering.webp" alt="Hero Image, San Pedro Sula Temple">
+                <source media="(min-width:900px )" srcset="lesson03/images/hero-big.webp">
+                <source media="(max-width: 450px)" srcset="lesson03/images/hero-small.webp">
+                <img src="lesson03/images/hero-big.webp" alt="Hero Image, San Pedro Sula Temple" width="860" height="369" loading="lazy">
             </picture>
-        </section>
+            <div class="herolabel">
+                <p>San Pedro Sula Temple</p>
+            </div>
+        </div>
         <h2>WDD 230: Web Frontend Development</h2>
         <section class="card">
             <h3>Learning activities</h3>
@@ -51,10 +53,10 @@
         </section>
         <section class="card">
             <h3>Information</h3>
-            <p>
-                <img id="weather-icon"> <span id="current-temp"></span>
-                <figcaption></figcaption>
-            </p>
+            <div id="weather-container">
+                <img id="weather-icon" alt="weather icon" src="#"> <span id="current-temp"></span>
+            </div>
+            <h4>1</h4>
             <p>
                 Page views: <span id="number-of-visits"></span>
             </p>
