@@ -186,4 +186,48 @@ h2 {
     align-items: center;
   }
 
-  
+/*                   discover page                     */
+
+
+.card-attractions, .card-population, .card-history{
+	background: #fff;
+	max-width: 767px;
+	display: block;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+  grid-column: 1/2;
+  text-align: center;
+  }
+
+.image-1{
+  grid-column: 2/4;
+  grid-row: 1/2;
+}
+.image-1 img {
+  width: 100%;
+  margin: 0 auto; 
+  display: flex;
+}
+
+.image-2{
+  grid-column: 2/4;
+  grid-row: 2/3;
+}
+
+.image-2 img {
+  width: 100%;
+  margin: 0 auto; 
+  display: flex;
+}
+
+.image-3{
+  grid-column: 2/4;
+  grid-row: 3/4;
+}
+
+.image-3 img {
+  width: 100%;
+  margin: 0 auto; 
+  display: flex;
+}
