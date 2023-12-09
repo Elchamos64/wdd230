@@ -1,6 +1,6 @@
 // Define baseURL and linksURL
 const baseURL = "https://elchamos64.github.io/wdd230"; // Replace with your GitHub pages URL
-const linksURL = 'data/links.json'; // Replace with the correct path to your links.json file
+const linksURL = "https://elchamos64.github.io/wdd230/data/links.json"; // Replace with the correct path to your links.json file
 
 // Function to get links data asynchronously
 async function getLinks() {
@@ -15,53 +15,66 @@ async function getLinks() {
 }
 
 // Function to display links
-function displayLinks(weeks) {
-  // Assuming there is a container with id "learning-activities" in your HTML
+function displayLinks(lessons) {
   const learningActivitiesContainer = document.getElementById("learning-activities");
 
   // Clear existing content
   learningActivitiesContainer.innerHTML = "";
 
-  // Loop through each week and build the links
-  weeks.forEach((week) => {
-    const weekNumber = week.week;
-    const links = week.links;
+  // Check if lessons is defined and is an array
+  if (Array.isArray(lessons)) {
+    lessons.forEach((lesson) => {
+      // Check if the lesson object is defined and has necessary properties
+      if (lesson && lesson.Lessons) {
+        // Use the first lesson in the array if there are multiple
+        const firstLesson = lesson.Lessons[0];
 
-    // Create a div element for each week
-    const weekDiv = document.createElement("div");
-    weekDiv.classList.add("week-container");
+        if (firstLesson && firstLesson.week && firstLesson.link) {
+          const weekNumber = firstLesson.week;
+          const links = firstLesson.link;
 
-    // Create a heading for the week
-    const weekHeading = document.createElement("h2");
-    weekHeading.textContent = `Week ${weekNumber}`;
-    weekDiv.appendChild(weekHeading);
+          const weekDiv = document.createElement("div");
+          weekDiv.classList.add("week-container");
 
-    // Create an unordered list for the links
-    const linksList = document.createElement("ul");
+          const weekHeading = document.createElement("h2");
+          weekHeading.textContent = `${weekNumber}`;
+          weekDiv.appendChild(weekHeading);
 
-    // Loop through each link in the week
-    links.forEach((link) => {
-      // Create list item for each link
-      const listItem = document.createElement("li");
+          const linksList = document.createElement("ul");
 
-      // Create a hyperlink
-      const linkElement = document.createElement("a");
-      linkElement.href = `${baseURL}/${link.url}`; // Assuming the link object has a "url" property
-      linkElement.textContent = link.title; // Assuming the link object has a "title" property
+          // Check if links is defined and is an array
+          if (Array.isArray(links)) {
+            links.forEach((link) => {
+              // Check if the link object has the necessary properties
+              if (link && link.url && link.title) {
+                const listItem = document.createElement("li");
 
-      // Append the link to the list item
-      listItem.appendChild(linkElement);
+                const linkElement = document.createElement("a");
+                linkElement.href = `${baseURL}/${link.url}`;
+                linkElement.textContent = link.title;
 
-      // Append the list item to the links list
-      linksList.appendChild(listItem);
+                listItem.appendChild(linkElement);
+                linksList.appendChild(listItem);
+              } else {
+                console.error(`Invalid data structure for week ${weekNumber} - invalid link object:`, link);
+              }
+            });
+          } else {
+            console.error(`Invalid data structure for week ${weekNumber}:`, links);
+          }
+
+          weekDiv.appendChild(linksList);
+          learningActivitiesContainer.appendChild(weekDiv);
+        } else {
+          console.error("Invalid lesson object:", firstLesson);
+        }
+      } else {
+        console.error("Invalid data structure:", lesson);
+      }
     });
-
-    // Append the links list to the week container
-    weekDiv.appendChild(linksList);
-
-    // Append the week container to the learning activities container
-    learningActivitiesContainer.appendChild(weekDiv);
-  });
+  } else {
+    console.error("Invalid data structure:", lessons);
+  }
 }
 
 // Call the getLinks function to start the process
