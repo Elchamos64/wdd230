@@ -297,3 +297,8 @@ select {
   display: flex;
   margin-top: 10px;
 }
+
+.banner{
+  text-align: center;
+  grid-column: 1/4;
+}
