@@ -15,66 +15,28 @@ async function getLinks() {
 }
 
 // Function to display links
-function displayLinks(lessons) {
-  const learningActivitiesContainer = document.getElementById("learning-activities");
+function displayLinks(weeks) {
+  const learningActivities = document.getElementById("learning-activities");
+  learningActivities.innerHTML = ""; // Clear existing content
 
-  // Clear existing content
-  learningActivitiesContainer.innerHTML = "";
+  weeks.forEach((weekData) => {
+    weekData.Lessons.forEach((lesson) => {
+      const weekName = lesson.week;
+      const links = lesson.link;
 
-  // Check if lessons is defined and is an array
-  if (Array.isArray(lessons)) {
-    lessons.forEach((lesson) => {
-      // Check if the lesson object is defined and has necessary properties
-      if (lesson && lesson.Lessons) {
-        // Use the first lesson in the array if there are multiple
-        const firstLesson = lesson.Lessons[0];
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `${weekName} |`;
 
-        if (firstLesson && firstLesson.week && firstLesson.link) {
-          const weekNumber = firstLesson.week;
-          const links = firstLesson.link;
+      links.forEach((link) => {
+        const linkElement = document.createElement("a");
+        linkElement.href = `${baseURL}/${link.url}`;
+        linkElement.textContent = ` ${link.title} |`;
+        listItem.appendChild(linkElement);
+      });
 
-          const weekDiv = document.createElement("div");
-          weekDiv.classList.add("week-container");
-
-          const weekHeading = document.createElement("h2");
-          weekHeading.textContent = `${weekNumber}`;
-          weekDiv.appendChild(weekHeading);
-
-          const linksList = document.createElement("ul");
-
-          // Check if links is defined and is an array
-          if (Array.isArray(links)) {
-            links.forEach((link) => {
-              // Check if the link object has the necessary properties
-              if (link && link.url && link.title) {
-                const listItem = document.createElement("li");
-
-                const linkElement = document.createElement("a");
-                linkElement.href = `${baseURL}/${link.url}`;
-                linkElement.textContent = link.title;
-
-                listItem.appendChild(linkElement);
-                linksList.appendChild(listItem);
-              } else {
-                console.error(`Invalid data structure for week ${weekNumber} - invalid link object:`, link);
-              }
-            });
-          } else {
-            console.error(`Invalid data structure for week ${weekNumber}:`, links);
-          }
-
-          weekDiv.appendChild(linksList);
-          learningActivitiesContainer.appendChild(weekDiv);
-        } else {
-          console.error("Invalid lesson object:", firstLesson);
-        }
-      } else {
-        console.error("Invalid data structure:", lesson);
-      }
+      learningActivities.appendChild(listItem);
     });
-  } else {
-    console.error("Invalid data structure:", lessons);
-  }
+  });
 }
 
 // Call the getLinks function to start the process

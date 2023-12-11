@@ -1,0 +1,471 @@
+
+<!-- saved from url=(0123)file:///C:/Users/oscar/OneDrive/Documents/BYU-Idaho/Fall%202023/ECEN240_FundamentalsDS/Final/Microprocessor%20Emulator.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Microprocessor Emulator</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            td {font-family: monospace}
+            .label {font-family: monospace; text-align: right}
+        </style>
+        <script type="text/javascript">
+/* 
+ * A microprocessor emulator for ECEN 160 Final Project
+ * by Steven P. Davies.
+ * Updated March 2018 by Asa Skousen for Randy Jack's
+ * three ported register file version of the final project.
+ */
+
+var pc;
+var regs = [0, 0, 0, 0, 0, 0, 0, 0];
+if(Object.seal) {
+	Object.seal(regs);
+}
+var display = "";
+
+var mnemonics = ["NOP", "LD", "MOV", "DISP", "XOR", "AND", "OR", "ADD", "SUB"];
+
+// Handler for step button
+function handleStep() {
+    try {
+        loadRegisters();
+        
+        var code = document.getElementById("code").value.split("\n");
+        
+        if (0 <= pc && pc < code.length) {
+            var instruction = code[pc].split(/,+\s+[rR]?|\s+[rR]?|,+[rR]?|\s+|,+/);
+			if(instruction.length > 4) {
+					throw "Too many values for line " + pc;
+				}
+			if(instruction.length > 3) {
+				if(isNaN(instruction[3])) {
+					throw "Wrong format for  at line " + pc;
+				}
+			}
+			if(instruction.length > 2) {
+				if(isNaN(instruction[2])) {
+					throw "Wrong format at line " + pc;
+				}
+			}
+			if(instruction.length > 1) {
+				if(isNaN(instruction[1])) {
+					throw "Wrong format at line " + pc;
+				}
+			}
+            execute(instruction);
+        } else {
+            alert("Reached end of code.");
+        }
+
+        saveRegisters();
+    } catch (e) {
+        alert(e);
+    }
+}
+
+// Handler for run button
+function handleRun() {
+    try {
+        loadRegisters();
+
+        var code = document.getElementById("code").value.split("\n");
+
+        try {
+            while (0 <= pc && pc < code.length) {
+                var instruction = code[pc].split(/,+\s+[rR]?|\s+[rR]?|,+[rR]?|\s+|,+/);
+				if(instruction.length > 4) {
+					throw "Too many values for line " + pc;
+				}
+				if(instruction.length > 3) {
+					if(isNaN(instruction[3])) {
+						throw "Wrong format at line " + pc;
+					}
+				}
+				if(instruction.length > 2) {
+					if(isNaN(instruction[2])) {
+						throw "Wrong format at line " + pc;
+					}
+				}
+				if(instruction.length > 1) {
+					if(isNaN(instruction[1])) {
+						throw "Wrong format at line " + pc;
+					}
+				}
+                execute(instruction);
+            }
+        } catch (e) {
+            alert(e);
+        }
+
+        saveRegisters();
+    } catch (e) {
+        alert(e);
+    }
+}
+
+// Handler for reset button
+function handleReset() {
+    pc = 0;
+    for(var i = 0; i < regs.length; i++) {
+		regs[i] = 0;
+	}
+    display = "";
+    
+    saveRegisters();
+}
+
+// Get a register value from an HTML form input element
+function getRegister(id) {
+    var field = document.getElementById(id);
+    var value = parseInt(field.value);
+    if (isNaN(value)) {
+        throw field.value + " is not a valid value for " + id + "." +
+                "\nExpecting an integer value optionally prefixed with 0x for hexadecimal";
+    }
+    return value;   // property, not attribute, has current value which may have been changed by user
+}
+
+// Set a register HTML form input element value
+function setRegister(id, value) {
+    var field = document.getElementById(id);
+    field.value = "0x" + value.toString(16);
+    field.setAttribute("value", "0x" + value);   // Safari only displays attribute if the user has changed it
+}
+
+// Load register global variables from HTML form, could have been changed by user
+function loadRegisters() {
+    pc   = getRegister("pc");
+    for(var i = 0; i < regs.length; i++) {
+		regs[i] = getRegister("r" + i.toString());
+	}
+	
+    // Display is not loaded because it is not user modifiable
+}
+
+// Save register global variables to HTML form, could have been changed by user
+function saveRegisters() {
+    setRegister("pc", pc);
+	for(var i = 0; i < regs.length; i++) {
+		setRegister("r" + i.toString(), regs[i]);
+	}
+
+    document.getElementById("display").value = display;
+    numberCode();
+}
+
+function numberCode() {
+    var code = document.getElementById("code").value.split("\n");
+    var text = "";
+    for (var i = 0; i < code.length; i++) {
+        var instruction = code[i].split(/,+\s+[rR]?|\s+[rR]?|,+[rR]?|\s+|,+/);
+        if (i == pc) {
+            text = text + "> ";
+        }
+        text = text + i + ": ";
+        var opcode = mnemonics.indexOf(instruction[0]);
+		var operand = [0, 0, 0];
+		if(opcode > 7) {
+			opcode = 0xf; // for SUB opcode
+		}
+		
+		// for operands
+		
+		// for LD
+		if(opcode == 1) {
+			operand[0] = instruction[1] & 0xf;
+			// operand 1 is 0
+			operand[2] = instruction[2] & 0xf;
+		}
+		
+		// for MOV
+		else if(opcode == 2) {
+			operand[0] = instruction[1] & 0xf;
+			operand[1] = instruction[2] & 0xf;
+			// operand 2 is 0
+		}
+		
+		// for DISP
+		else if(opcode == 3) {
+			operand[1] = instruction[1] & 0xf;
+			operand[2] = instruction[2] & 0xf;
+			// operand 3 is 0
+		}
+		
+		// for rest
+		else if(opcode > 3) {
+			operand[0] = instruction[1] & 0xf;
+			operand[1] = instruction[2] & 0xf;
+			operand[2] = instruction[3] & 0xf;
+		}
+		
+		// display four zeros for NOP
+        if(opcode == 0) {
+			text = text + "0000";
+		} // works in every other instance
+		else {
+			var machinecode = (opcode << 12) | (operand[0] << 8) | (operand[1] << 4) | operand[2];
+			text = text + machinecode.toString(16);
+		}
+        
+        text = text + "\n";
+    }
+    document.getElementById("addr").value = text;
+}
+
+function execute(instruction) {
+    var opcode = instruction[0];
+    switch (opcode) {
+        case "NOP":
+            break;
+        case "LD":
+			if(instruction.length < 3 || instruction[1] > 7) {
+				throw "Wrong format at line " + pc;
+			}
+            regs[instruction[1]] = instruction[2] & 0xF;
+            break;
+        case "MOV":
+			if(instruction.length < 3 || instruction[1] > 7 || instruction[2] > 7) {
+				throw "Wrong format at line " + pc;
+			}
+            regs[instruction[1]] = regs[instruction[2]] & 0xF;
+            break;
+        case "DISP":
+			if(instruction.length < 3 || instruction[1] > 7 || instruction[2] > 7) {
+				throw "Wrong format at line " + pc;
+			}
+            display += String.fromCharCode(((regs[instruction[1]] & 0xF) << 4) | (regs[instruction[2]] & 0xF));
+            break;
+		case "XOR":
+			if(instruction.length < 4 || instruction[1] > 7 || instruction[2] > 7 || instruction[3] > 7) {
+				throw "Wrong format at line " + pc;
+			}
+            regs[instruction[1]] = (regs[instruction[2]] ^ regs[instruction[3]]) & 0xF;
+            break;
+		case "AND":
+			if(instruction.length < 4 || instruction[1] > 7 || instruction[2] > 7 || instruction[3] > 7) {
+				throw "Wrong format at line " + pc;
+			}
+            regs[instruction[1]] = (regs[instruction[2]] & regs[instruction[3]]) & 0xF;
+            break;
+		 case "OR":
+			if(instruction.length < 4 || instruction[1] > 7 || instruction[2] > 7 || instruction[3] > 7) {
+				throw "Wrong format at line " + pc;
+			}
+            regs[instruction[1]] = (regs[instruction[2]] | regs[instruction[3]]) & 0xF;
+            break;
+        case "ADD":
+			if(instruction.length < 4 || instruction[1] > 7 || instruction[2] > 7 || instruction[3] > 7) {
+				throw "Wrong format at line " + pc;
+			}
+            regs[instruction[1]] = (regs[instruction[2]]+ regs[instruction[3]]) & 0xF;
+            break;
+        case "SUB":
+			if(instruction.length < 4 || instruction[1] > 7 || instruction[2] > 7 || instruction[3] > 7) {
+				throw "Wrong format at line " + pc;
+			}
+            regs[instruction[1]] = (regs[instruction[2]] - regs[instruction[3]]) & 0xF;
+            break;
+        default:
+            throw opcode + " at line " + pc + " is not a valid operand." +
+                    "\nExpecting one of: NOP, LD, MOV, DISP, XOR, AND, OR, ADD, SUB";
+    }
+    pc++;
+}
+        </script>     
+    </head>
+    <body>
+        <h1>Emulator for the ECEN 160 Final Project Microprocessor</h1>
+        <p>
+            This emulator gives you a way develop and test software independently of developing the microprocessor hardware.
+        </p>
+        <p>
+            Each line in the code area should be one mnemonic optionally followed by a space and up to three operands.
+			Operands are register names, r0, r1, ... r7, or numbers.
+			Numbers may be specified in decimal or hexadecimal.  Hexadecimal numbers have a leading "0x" (0x3).
+        </p>
+        <table>
+            <tbody><tr>
+                <th>Mnemonic</th>
+                <th>Instruction Description</th>
+            </tr>
+            <tr>
+                <td>NOP</td>
+                <td> No Operation</td>
+            </tr>
+            <tr>
+                <td>LD Rd, data</td>
+                <td> Reg Rd &lt;= data</td>
+            </tr>
+			<tr>
+                <td>MOV Rd, ra</td>
+                <td> Reg Rd &lt;= Ra</td>
+            </tr>
+            <tr>
+                <td>DISP ra, rb</td>
+                <td> Output contents of registers in order entered</td>
+            </tr>
+            <tr>
+                <td>XOR rd, ra, rb</td>
+                <td> Reg D &lt;= Reg A ^ Reg B</td>
+            </tr>
+			 <tr>
+                <td>AND rd, ra, rb</td>
+                <td> Reg D &lt;= Reg A &amp; Reg B</td>
+            </tr>
+            <tr>
+                <td>OR rd, ra, rb</td>
+                <td> Reg D &lt;= Reg A | Reg B</td>
+            </tr>
+            <tr>
+                <td>ADD rd, ra, rb</td>
+                <td> Reg D &lt;= Reg A + Reg B</td>
+            </tr>
+            <tr>
+                <td>SUB rd, ra, rb</td>
+                <td> Reg D &lt;= Reg A - Reg B</td>
+            </tr>
+        </tbody></table>
+        <hr>
+        <p>Use the <strong>Run</strong>, <strong>Step</strong>, and <strong>Reset</strong> buttons to test the code.</p>
+        <ul>
+            <li><strong>Run</strong> - Starts at the current PC and executes to the end of the code without stopping.</li>
+            <li><strong>Step</strong> - Executes the code at the address of the PC, increments the PC, then stops.</li>
+            <li><strong>Reset</strong> - Resets all the registers to zero and clears the display.</li>
+        </ul>
+        <p>After executing the code you need to reset the PC to execute the code again. While the program is stopped you can view and modify registers.</p>
+        <hr>
+        <form>
+            <table>
+                <tbody><tr>
+                    <th><label for="code">Code</label></th>
+                    <th>Register</th>
+                    <th>Value</th>
+                </tr>
+				<tr>
+					<td rowspan="0">
+						<textarea id="addr" rows="24" cols="9" readonly="true" class="label"></textarea>
+						<textarea rows="24" id="code" name="code" onchange="numberCode()" placeholder="Code goes here"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="pc">PC:</label>
+					</td>
+					<td>
+						<input type="text" id="pc" name="pc" value="0x5">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="r0">Reg0:</label>
+					</td>
+					<td>
+						<input type="text" id="r0" name="r0" value="0x3">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="r1">Reg1:</label>
+					</td>
+					<td>
+						<input type="text" id="r1" name="r1" value="0x4">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="r2">Reg2:</label>
+					</td>
+					<td>
+						<input type="text" id="r2" name="r2" value="0x2">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="r3">Reg3:</label>
+					</td>
+					<td>
+						<input type="text" id="r3" name="r3" value="0x0">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="r4">Reg4:</label>
+					</td>
+					<td>
+						<input type="text" id="r4" name="r4" value="0x6">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="r5">Reg5:</label>
+					</td>
+					<td>
+						<input type="text" id="r5" name="r5" value="0x0">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="r6">Reg6:</label>
+					</td>
+					<td>
+						<input type="text" id="r6" name="r6" value="0x0">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="r7">Reg7:</label>
+					</td>
+					<td>
+						<input type="text" id="r7" name="r7" value="0x0">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="display">Display:</label>
+					</td>
+					<td>
+						<textarea rows="4" id="display" name="display" readonly="true"></textarea>
+					</td>
+				</tr>
+                <tr>
+                    <td>
+                        <button type="button" id="run" name="run" onclick="handleRun()"><strong>Run</strong></button>
+                        <button type="button" id="step" name="step" onclick="handleStep()"><strong>Step</strong></button>
+                        <button type="button" id="reset" name="reset" onclick="handleReset()"><strong>Reset</strong></button>
+                    </td>
+                </tr>
+            </tbody></table>
+        </form>
+        <hr>
+        Here is sample code you can run.  It prints "Hi" a newline and the number 3.
+        <pre><code>LD r0, 0x8
+LD r1, 0x4
+DISP r1, r0
+LD r0, 0x9
+LD r1, 0x6
+DISP r1, r0
+LD r0, 0xA
+LD r1, 0
+DISP r1, r0
+NOP
+LD r3, 3
+MOV r4, r3
+DISP r4, r3</code></pre>
+        The left frame shows the machine code representation of the assembly code:
+        <pre><code>1008	LD r0, 0x8
+1104	LD r1, 0x4
+3010	DISP r1, r0
+1009	LD r0, 0x9
+1106	LD r1, 0x6
+3010	DISP r1, r0
+100a	LD r0, 0xA
+1100	LD r1, 0
+3010	DISP r1, r0
+0000	NOP
+1303	LD r3, 3
+2430	MOV r4, r3
+3043	DISP r4, r3</code></pre>
+        The machine code instructions are what get put in the program PROM of the Logisim microprocessor.
+    
+
+</body></html>

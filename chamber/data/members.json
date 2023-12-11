@@ -1,16 +1,95 @@
-[
-  {
-    "name": "IDWEB",
-    "address": {
-      "street1": "2115 S Vista Avenue",
-      "street2": "",
-      "city": "Boise",
-      "state": "Idaho",
-      "zipcode": "83705"
+{
+  "members": [
+    {
+      "name": "IDWEB",
+      "address": {
+        "street": "2115 S Vista Avenue",
+        "city": "Boise",
+        "state": "Idaho",
+        "zipcode": "83705"
+      },
+      "phone": "208-342-9386",
+      "url": "",
+      "imageUrl": "",
+      "membershiLevel": "Gold"
     },
-    "phone": "208-342-9386",
-    "url": "",
-    "imageUrl": "",
-    "membershiLevel": "Gold"
-  }
-]
+    {
+      "name": "Member2",
+      "address": {
+        "street": "123 Main Street",
+        "city": "City2",
+        "state": "State2",
+        "zipcode": "12345"
+      },
+      "phone": "222-222-2222",
+      "url": "",
+      "imageUrl": "",
+      "membershiLevel": "Silver"
+    },
+    {
+      "name": "Member3",
+      "address": {
+        "street": "456 Oak Street",
+        "city": "City3",
+        "state": "State3",
+        "zipcode": "56789"
+      },
+      "phone": "333-333-3333",
+      "url": "",
+      "imageUrl": "",
+      "membershiLevel": "Bronze"
+    },
+    {
+      "name": "Member4",
+      "address": {
+        "street": "789 Pine Street",
+        "city": "City4",
+        "state": "State4",
+        "zipcode": "98765"
+      },
+      "phone": "444-444-4444",
+      "url": "",
+      "imageUrl": "",
+      "membershiLevel": "Platinum"
+    },
+    {
+      "name": "Member5",
+      "address": {
+        "street": "321 Cedar Street",
+        "city": "City5",
+        "state": "State5",
+        "zipcode": "54321"
+      },
+      "phone": "555-555-5555",
+      "url": "",
+      "imageUrl": "",
+      "membershiLevel": "Diamond"
+    },
+    {
+      "name": "Member6",
+      "address": {
+        "street": "654 Maple Street",
+        "city": "City6",
+        "state": "State6",
+        "zipcode": "13579"
+      },
+      "phone": "666-666-6666",
+      "url": "",
+      "imageUrl": "",
+      "membershiLevel": "Silver"
+    },
+    {
+      "name": "Member7",
+      "address": {
+        "street": "987 Birch Street",
+        "city": "City7",
+        "state": "State7",
+        "zipcode": "24680"
+      },
+      "phone": "777-777-7777",
+      "url": "",
+      "imageUrl": "",
+      "membershiLevel": "Gold"
+    }
+  ]
+}
