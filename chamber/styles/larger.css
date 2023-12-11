@@ -52,13 +52,82 @@
     flex: 1 1 100%;
   }
 
+  /* join.html */
+
+  form {
+    grid-row: 3/7;
+    grid-column: 1/4;
+  }
+  h1 {
+    padding: 10px;
+    text-align: center;
+    grid-column: 1/4;
+    grid-row: 2/3;
+    height: 10px;
+    font-size: 3rem;
+  }
+  form {
+    margin: 10px 10px;
+    text-align: left;
+  }
+
+  legend {
+    margin: 20px;
+  }
+
+  label {
+    display: block;
+    text-align: left;
+    padding: 10px 20px;
+  }
+
+  input {
+    display: block;
+  }
+
+  input#submitBtn {
+    width: 25%;
+  }
+
+  #membership {
+    display: block;
+  }
+
+  .join-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .information-box {
+    grid-column: 1/2;
+    grid-row: 1;
+  }
+
+  .membership-info {
+    grid-column: 2/3;
+    grid-row: 1;
+    border-radius: 19px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 9px;
+    /* background-color: #f2f2f2; */
+  }
+
+  .membership-h1 {
+    text-align: center;
+  }
+
+  .submitJoin {
+    margin: 10px;
+  }
+
+  /*                   discover page                     */
+
   main {
     display: grid;
     grid-template-columns: 315px 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   }
-
-  /*                   discover page                     */
 
   .card-history,
   .card-population,
@@ -130,3 +199,6 @@
   }
   
 }
+
+
+
