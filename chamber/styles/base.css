@@ -277,6 +277,9 @@ select {
 
 /* discover page */
 
+#sidebar{
+  text-align: center;
+}
 .card-attractions, .card-population, .card-history{
 	background: #fff;
 	max-width: 767px;
@@ -292,4 +295,5 @@ select {
   width: 100%;
   margin: 0 auto; 
   display: flex;
+  margin-top: 10px;
 }
