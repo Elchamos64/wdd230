@@ -46,6 +46,65 @@
             "title": "Hamburguer Menu"
           }
         ]
+      },
+      {
+        "week": "Lesson03",
+        "link": [
+          {
+            "url": "lesson03/images/landscape_final.webp",
+            "title": "Landscape"
+          },
+          {
+            "url": "lesson03/lazyload.html",
+            "title": "Lazy Loading"
+          },
+          {
+            "url": "lesson03/responsive-images.html",
+            "title": "responsive images"
+          },
+          {
+            "url": "https://codepen.io/Oscar-Andres-Ramos-Garcia/pen/MWLxJMP",
+            "title": "Pseudo-classes"
+          }
+        ]
+      },
+      {
+        "week": "Lesson04",
+        "link": [
+          {
+            "url": "#",
+            "title": "CSS Combinators"
+          },
+          {
+            "url": "#",
+            "title": "HTML Tables"
+          },
+          {
+            "url": "#",
+            "title": "HTML Forms"
+          }
+        ]
+      },
+      {
+        "week": "Lesson05",
+        "link": [
+          {
+            "url": "lesson05/prophets.html",
+            "title": "Prophets"
+          },
+          {
+            "url": "https://codepen.io/Oscar-Andres-Ramos-Garcia/pen/ExrXyro",
+            "title": "Pseudo-Elements"
+          },
+          {
+            "url": "lesson05/new-ward-members.json",
+            "title": "HTML Forms"
+          },
+          {
+            "url": "lesson05/weather.html",
+            "title": "Weather"
+          }
+        ]
       }
 
     ]

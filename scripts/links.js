@@ -1,6 +1,6 @@
 // Define baseURL and linksURL
-const baseURL = "https://elchamos64.github.io/wdd230"; // Replace with your GitHub pages URL
-const linksURL = "https://elchamos64.github.io/wdd230/data/links.json"; // Replace with the correct path to your links.json file
+const baseURL = "https://elchamos64.github.io/wdd230"; 
+const linksURL = "https://elchamos64.github.io/wdd230/data/links.json";
 
 // Function to get links data asynchronously
 async function getLinks() {
