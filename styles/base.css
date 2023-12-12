@@ -20,6 +20,9 @@ li{
   font-family: 'Raleway', Roboto, Rubik;
 }
 
+#learning-activities{
+  margin: 10px; 
+}
 /* mobile **************************/
 header {
   max-width: 800px;
